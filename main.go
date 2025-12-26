@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"goldprice-api/handlers"
 	"goldprice-api/services"
@@ -36,9 +37,15 @@ func main() {
 	router.GET("/api/metadata", handlers.GetMetadata)
 	router.DELETE("/api/prices/clear", handlers.ClearAllData)
 
+	// Get port from environment variable (Cloud Run sets PORT)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080" // Default for Cloud Run
+	}
+
 	// Start server
-	log.Println("🚀 Gold Price API starting on http://localhost:8000")
-	if err := router.Run(":8000"); err != nil {
+	log.Printf("🚀 Gold Price API starting on http://localhost:%s", port)
+	if err := router.Run(":" + port); err != nil {
 		log.Fatalf("Failed to start server: %v", err)
 	}
 }
