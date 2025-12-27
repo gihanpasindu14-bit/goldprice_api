@@ -27,10 +27,11 @@ WORKDIR /root/
 # Copy the binary from builder
 COPY --from=builder /app/main .
 
-# Copy Firebase credentials
-COPY firebase-credentials.json .
+# Firebase credentials will be provided via environment variable in Railway
+# If needed locally, uncomment the line below
+# COPY firebase-credentials.json .
 
-# Expose port 8080 (Cloud Run default)
+# Expose port (Railway sets PORT environment variable)
 EXPOSE 8080
 
 # Run the application

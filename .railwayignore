@@ -1,0 +1,40 @@
+# Files to ignore during Railway deployment
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+
+# Build artifacts (will be rebuilt)
+node_modules/
+__pycache__/
+*.pyc
+
+# Documentation
+docs/
+examples/
+*.md
